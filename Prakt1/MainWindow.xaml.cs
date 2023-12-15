@@ -29,13 +29,17 @@ namespace Prakt1
         // Сгенерировать числа и найти минимальное
         private void btnGenerateAndGetMin_Click(object sender, RoutedEventArgs e)
         {
-            if (Int32.TryParse(tbNumbersCount.Text, out int n)) // Получаем количество случайных чисел
+            try
             {
+                int n = Convert.ToInt32(tbNumbersCount.Text);
                 Class1.GenerateAndGetMin(n, out int min, out string numbers); // Генерируем случайные числа и находим минимальное
                 tbNumbers.Text = numbers; // Выводим сгенерированные числа
                 tbMin.Text = min.ToString(); // Выводим минимальное число
             }
-            else MessageBox.Show("Введите правильные значения", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            catch
+            {
+                MessageBox.Show("Введите правильные значения", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Выход
